@@ -14,15 +14,29 @@
   <form class="form-horizontal">
     <div class="form-group">
       <label for="title">Title:</label>
-      <input type="text" class="form-control" id="email" placeholder="Enter title" name="title">
+      <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
     </div>
     <div class="form-group">
       <label for="body">Body:</label>
       <input type="text" class="form-control inputlg" id="body" placeholder="Enter body" name="body">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <div class="form-group">
+      <label for="index">Index:</label>
+      <input type="text" class="form-control" id="index" placeholder="Enter index" name="index">
+    </div>
+    <div class="form-group">
+      <label for="type">Type:</label>
+      <input type="text" class="form-control" id="type" placeholder="Enter type" name="type">
+    </div>
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+    </div>
+    <button type="submit" class="btn btn-default" id="submitValues">Submit</button>
   </form>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elasticsearch/13.2.0/elasticsearch.jquery.min.js"></script>
+<script src="index.js"></script>
 
 </body>
 </html>

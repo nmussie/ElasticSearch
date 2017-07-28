@@ -4,16 +4,26 @@ var client = new $.es.Client({
 
 $(document).ready(function() {
   $("#submitSearch").click(function() {
+    console.log("here7");
     $("#searchResults").empty();
     var val = $("#search").val();
     search(val);
     $("#search").val("");
   });
+
+  $("#submitValues").click(function() {
+    var title = $("#title").val();
+    var body = $("#body").val();
+    var index = $("#index").val();
+    var type = $("#type").val();
+    var id = $("#id").val();
+    addVal(title, body, index, type, id);
+  });
 });
 
 function search(val) {
   client.ping({
-    requestTimeout: 3000000,
+    requestTimeout: 30000,
   }, function (error) {
     if (error) {
       console.error('elasticsearch cluster is down!');
@@ -33,6 +43,25 @@ function search(val) {
   });
 }
 
+function addVal(title, body, index, type, id) {
+  $.ajax({
+        type: "PUT",
+        async: false,
+        url: 'http://localhost:9200/' + index + '/' + type + '/'+ id,
+        data: JSON.stringify({"user" : "kimchy","postDate" : "2012-06-21","body" : body, "title": title}),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (msg)
+                {
+                    alert("the json is "+ msg._index);
+                    $('#stage').html(msg._index );
+                    $('#stage').append(" type : "+msg._type );
+                    $('#stage').append(" id :"+msg._id)
+                },
+        error: function (err)
+        { alert(err.responseText)}
+    });
+}
 
 function showResult(result) {
   for (i = 0; i < result.length; i++) {
