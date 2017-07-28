@@ -15,8 +15,6 @@
   * http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
   * http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, X-User"
 
-## Access Elastic Search on http://localhost:9200
-
-### submit_page.html allows you to enter a new data object
-
-### index.html allows you to search from the data stored in elasticsearch
+###### Access Elastic Search on http://localhost:9200
+###### submit_page.html allows you to enter a new data object
+###### index.html allows you to search from the data stored in elasticsearch
