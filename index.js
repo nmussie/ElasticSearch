@@ -40,10 +40,10 @@ function search(val) {
   });
 
   client.search({
-    q: 'dilbert'
+    q: val
   }).then(function (body) {
     var hits = body.hits.hits;
-    console.log(hits);
+    console.log(hits); 
   }, function (error) {
     console.trace(error.message);
   });
