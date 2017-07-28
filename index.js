@@ -48,6 +48,33 @@ function search(val) {
   }, function (error) {
     console.trace(error.message);
   });
+
+client.suggest({
+  index: "",
+  body: {
+    titleSuggester: {
+      text: val,
+      term: {
+        field: "title"
+      }
+    },
+    userSuggester: {
+      text: val,
+      term: {
+        field: "user"
+      }
+    },
+    bodySuggester: {
+      text: val,
+      term: {
+        field: "body"
+      }
+    }
+  }
+},
+function(error, response) {
+  console.log(response);
+});
 }
 
 function addVal(title, body, index, type, id) {
