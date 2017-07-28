@@ -1,34 +1,17 @@
-//var elasticsearch = require('elasticsearch');
-//const $ = require('jquery');
-
-$(document).ready(function() {
-  $("#submitSearch").click(function() {
-    var val = $("#search").val();
-    console.log(val);
-    console.log(search(val));
-  });
-});
-
-// var client = new elasticsearch.Client({
-//   host: 'localhost:9200',
-//   log: 'trace'
-// });
-
 var client = new $.es.Client({
   hosts: 'http://localhost:9200'
 });
 
+$(document).ready(function() {
+  $("#submitSearch").click(function() {
+    $("#searchResults").empty();
+    var val = $("#search").val();
+    search(val);
+    $("#search").val("");
+  });
+});
 
 function search(val) {
-  // var client = new $.es.Client({
-  //   host: 'localhost:9200'
-  // });
-
-  // var client = new elasticsearch.Client({
-  //   host: 'localhost:9200',
-  //   log: 'trace'
-  // });
-
   client.ping({
     requestTimeout: 3000000,
   }, function (error) {
@@ -43,8 +26,36 @@ function search(val) {
     q: val
   }).then(function (body) {
     var hits = body.hits.hits;
-    console.log(hits); 
+    console.log(hits);
+    showResult(hits);
   }, function (error) {
     console.trace(error.message);
   });
 }
+
+
+function showResult(result) {
+  for (i = 0; i < result.length; i++) {
+    var body = result[i]._source["body"];
+    var date = result[i]._source["postDate"];
+    var title = result[i]._source["title"];
+    var user = result[i]._source["user"];
+    $("#searchResults").append('<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">' +
+       '<div class="d-flex w-100 justify-content-between">' +
+         '<small class="text-muted pull-right">' + date + '</small>' +
+         '<h5 class="mb-1">' + title + '</h5></div>' +
+       '<p class="mb-1">' + body + '</p>' +
+       '<small class="text-muted">' + user + '</small></a>');
+  }
+  $("#searchResults").show();
+}
+
+// function insertRow(date, title, body, user) {
+//   return
+//  '<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">' +
+//     '<div class="d-flex w-100 justify-content-between">' +
+//       '<small class="text-muted pull-right">' + date + '</small>' +
+//       '<h5 class="mb-1">' + title + '</h5></div>' +
+//     '<p class="mb-1">' + body + '</p>' +
+//     '<small class="text-muted">' + user + '</small></a>';
+// }
