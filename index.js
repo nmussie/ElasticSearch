@@ -43,6 +43,7 @@ function search(val) {
     q: 'dilbert'
   }).then(function (body) {
     var hits = body.hits.hits;
+    console.log(hits);
   }, function (error) {
     console.trace(error.message);
   });
