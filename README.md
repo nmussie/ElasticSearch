@@ -1,6 +1,7 @@
 # ElasticSearch
 
 ## Setting Up Elastic Search
+* All of the commands below are done through a terminal with at least JDK 6 installed 
 * wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.tar.gz
 * tar -zxvf elasticsearch-1.7.2.tar.gz
 * cd elasticsearch-1.7.2
