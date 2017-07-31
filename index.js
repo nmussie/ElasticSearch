@@ -59,6 +59,13 @@ function search(val) {
     var hits = body.hits.hits;
     //console.log(hits);
     showResult(hits);
+    $("#results").show();
+    if (hits.length > 0) {
+      $("#results").text("Showing " + hits.length + " results for " + val);
+    }
+    else {
+      $("#results").text("No results for " + val);
+    }
   }, function (error) {
     console.trace(error.message);
   });
