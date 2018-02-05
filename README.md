@@ -65,17 +65,28 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 ## To Run index.html and submit_page.html
 * Navigate to elasticsearch-1.7.2/config/elasticsearch.yml
 * Add the following lines to the file:
+  ```javascript
   * http.jsonp.enable: true
   * http.cors.enabled: true
   * http.cors.allow-origin: "*"
   * http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
   * http.cors.allow-headers: "X-Requested-With, Content-Type, Content-Length, X-User"
-
+  ```
+  
 ## Indexing Data
-* You can index or insert data into your local elastic search cluster through the submit_page.html page or manually by through the terminal. If you prefer the ladder, then you can do so by typing in the terminal:
+* You can index or insert data into your local elastic search cluster through the submit_page.html page or manually through the terminal. If you prefer the ladder, then you can do so by typing in the terminal:
   ```
   curl -XPUT 'http://localhost:9200/blog/post/1' -d '{"user": "Enter user", "postDate": "Enter date", "body": "Enter body" , "title": "Enter title"}'
   ```
+* If successful, it the terminal should return:
+  ```
+  {"ok":true,"_index":"blog","_type":"post","_id":"1","_version":1}
+  ```
+* Our submit page essentially does this for you but gives you a user interface to do so.
   
-###### submit_page.html allows you to enter a new data object
-###### index.html allows you to search from the data stored in elasticsearch
+## Searching Data
+* You can search data that you have indexed through the index.html page or manually through the terminal. If you prefer the ladder, then you can do so by typing in the terminal:
+  ```
+  curl 'http://localhost:9200/blog/post/_search?q=user:gary&pretty=true'
+  ```
+* This searches all blog posts by gary (just an example), but searching through our index.html is more powerful in the fact that it shows you what you have requested as well as suggestions based on what you have searched.
