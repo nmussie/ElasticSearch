@@ -38,21 +38,21 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 [2015-09-14 15:32:59,284][INFO ][gateway                  ] [Big Man] recovered [0] indices into cluster_state
 ```
 * You can now access your elastic search cluster through http://localhost:9200 on your web browser; this will return something like:
-```
-{
-  "status" : 200,
-  "name" : "Big Man",
-  "cluster_name" : "elasticsearch",
-  "version" : {
-    "number" : "1.7.2",
-    "build_hash" : "e43676b1385b8125d647f593f7202acbd816e8ec",
-    "build_timestamp" : "2015-09-14T09:49:53Z",
-    "build_snapshot" : false,
-    "lucene_version" : "4.10.4"
-  },
-  "tagline" : "You Know, for Search"
-}
-```
+  ```
+  {
+    "status" : 200,
+    "name" : "Big Man",
+    "cluster_name" : "elasticsearch",
+    "version" : {
+      "number" : "1.7.2",
+      "build_hash" : "e43676b1385b8125d647f593f7202acbd816e8ec",
+      "build_timestamp" : "2015-09-14T09:49:53Z",
+      "build_snapshot" : false,
+      "lucene_version" : "4.10.4"
+    },
+    "tagline" : "You Know, for Search"
+  }
+  ```
 
 ## To Run index.html and submit_page.html
 * Navigate to elasticsearch-1.7.2/config/elasticsearch.yml
@@ -65,13 +65,7 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 
 ## Indexing Data
 * You can index or insert data into your local elastic search cluster through the submit_page.html page or manually by through the terminal. If you prefer the ladder, then you can do so by typing in the terminal: 
-```curl -XPUT 'http://localhost:9200/blog/post/1' -d '
-{
-    "user": "Enter user", 
-    "postDate": "Enter date", 
-    "body": "Enter body" ,
-    "title": "Enter title"
-}'```
+```curl -XPUT 'http://localhost:9200/blog/post/1' -d '{"user": "Enter user", "postDate": "Enter date", "body": "Enter body" , "title": "Enter title"}'```
 
 ###### submit_page.html allows you to enter a new data object
 ###### index.html allows you to search from the data stored in elasticsearch
