@@ -3,10 +3,18 @@
 
 ## Setting Up Elastic Search
 * All of the commands below are done through a terminal with at least JDK 6 installed 
-```wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.tar.gz```
-```tar -zxvf elasticsearch-1.7.2.tar.gz```
-```cd elasticsearch-1.7.2```
-```bin/elasticsearch```
+  ```
+  wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.tar.gz
+  ```
+  ```
+  tar -zxvf elasticsearch-1.7.2.tar.gz
+  ```
+  ```
+  cd elasticsearch-1.7.2
+  ```
+  ```
+  bin/elasticsearch
+  ```
 * After those chains of commands you should see something like this in the terminal:
 ```
 [2015-09-14 15:32:52,278][INFO ][node                     ] [Big Man] version[1.7.2], pid[10907], build[e43676b/2015-09-14T09:49:53Z]
