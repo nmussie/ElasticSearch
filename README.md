@@ -8,7 +8,7 @@
 ```cd elasticsearch-1.7.2```
 ```bin/elasticsearch```
 * After those chains of commands you should see something like this in the terminal:
-  ```
+```
 [2015-09-14 15:32:52,278][INFO ][node                     ] [Big Man] version[1.7.2], pid[10907], build[e43676b/2015-09-14T09:49:53Z]
 [2015-09-14 15:32:52,279][INFO ][node                     ] [Big Man] initializing ...
 [2015-09-14 15:32:52,376][INFO ][plugins                  ] [Big Man] loaded [], sites []
@@ -36,7 +36,7 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 [2015-09-14 15:32:59,239][INFO ][http                     ] [Big Man] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.43.172:9200]}
 [2015-09-14 15:32:59,239][INFO ][node                     ] [Big Man] started
 [2015-09-14 15:32:59,284][INFO ][gateway                  ] [Big Man] recovered [0] indices into cluster_state
-  ```
+```
 * You can now access your elastic search cluster through http://localhost:9200 on your web browser; this will return something like:
   ```
   {
@@ -68,5 +68,6 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
   ```
   curl -XPUT 'http://localhost:9200/blog/post/1' -d '{"user": "Enter user", "postDate": "Enter date", "body": "Enter body" , "title": "Enter title"}'
   ```
+  
 ###### submit_page.html allows you to enter a new data object
 ###### index.html allows you to search from the data stored in elasticsearch
